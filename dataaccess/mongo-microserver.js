@@ -21,9 +21,7 @@ console.log("connected");
 
 module.exports = {
     addLabelResult: async (result) => {
-        console.log("🚀 ~ addLabelResult: ~ result", result)
         const doc = new AnnotationResult(result);
         await doc.save();
-        console.log("addLabelResult");
     },
 }

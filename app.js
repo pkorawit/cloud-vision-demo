@@ -9,8 +9,8 @@ const client = new vision.ImageAnnotatorClient();
     const pg = require('./dataaccess/pg-microserver')
     const mongo = require('./dataaccess/mongo-microserver')
     
-    // Get post data
-    const rows = await pg.getTouristPost(1, 10)
+    // Edit here to select a range of post data
+    const rows = await pg.getTouristPost(0, 0)
 
     for (let index = 0; index < rows.length; index++) {
 
@@ -20,6 +20,8 @@ const client = new vision.ImageAnnotatorClient();
         console.log(`🚀 ~ processing.. (${index+1}/${rows.length}) ${filename}`)
         
         let doc = {
+            number: row.id,
+            shortcode: row.shortcode,
             Labels: [],
             Landmarks:[]
         }

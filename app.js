@@ -26,6 +26,7 @@ const client = new vision.ImageAnnotatorClient();
             Landmarks:[]
         }
 
+        try{
         // Use Cloud Vision APIs for labeling and annotation
         // Performs label detection on the image file
         const [labelResult] = await client.labelDetection(filename);
@@ -39,6 +40,18 @@ const client = new vision.ImageAnnotatorClient();
 
         // Save data to mongoDB
         await mongo.addLabelResult(doc);
+        
+        }
+        catch(error){
+            console.log("🚀 ~ error", error)         
+            let errorDoc = {
+                number: row.id,
+                shortcode: row.shortcode,
+                Labels: [],
+                Landmarks:[]
+            }    
+            await mongo.addLabelResult(errorDoc);
+        }
     }
 
 })();

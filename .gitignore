@@ -124,3 +124,6 @@ keyfiles/
 
 # Resource files
 resources/
+
+# Downloaded photos
+photos/

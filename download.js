@@ -7,7 +7,7 @@
 
     // Edit here to select a range of post data
     const docs = await mongo.getPostRange(1,10)
-    const storageUri = `I:\\post_images_sandbox`
+    const storageUri = `I:\\post_images_sandbox\\`
 
 
     for (let index = 0; index < docs.length; index++) {
@@ -16,7 +16,7 @@
         const url = `https://www.instagram.com/p/${shortcode}/media/?size=l`
 
         try {                        
-            await downloadHelper.downloadImage(url, `${storageUri}\\${shortcode}.jpg`)
+            await downloadHelper.downloadImage(url, `${storageUri}${shortcode}.jpg`)
             console.log(`${index + 1}/${docs.length} : ${shortcode} ... downloaded`);
         }
         catch (err) {

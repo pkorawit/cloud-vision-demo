@@ -53,6 +53,6 @@ module.exports = {
     },
 
     getPostRange: async (start, end) => {
-        return await Post.find({}).skip(start - 1).limit(end - start).exec();
+        return await Post.find({}).skip(start - 1).limit(end - start + 1).exec();
     },
 }
